@@ -1,0 +1,7 @@
+
+<div>
+    {% if record %}
+    <a class="mx-1 btn btn-sm btn-primary" href="{% url "car_edit" car_id=record.id %}">Update</a>
+    <a class="mx-1 btn btn-sm btn-link" href="{% url "car_delete" car_id=record.id %}?car_name={{ record.name }}">Delete</a>
+    {% endif %}
+</div>

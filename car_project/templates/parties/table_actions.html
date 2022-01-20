@@ -1,0 +1,7 @@
+
+<div>
+    {% if record %}
+    <a class="mx-1 btn btn-sm btn-primary" href="{% url "party_edit" party_id=record.id %}">Update</a>
+    <a class="mx-1 btn btn-sm btn-link" href="{% url "party_delete" party_id=record.id %}?car_name={{ record.full_name }}">Delete</a>
+    {% endif %}
+</div>

@@ -1,0 +1,91 @@
+[2022-01-20 14:17:44,214: ERROR/MainProcess] consumer: Cannot connect to redis://localhost:6379//: Error 99 connecting to localhost:6379. Cannot assign requested address..
+Trying again in 2.00 seconds... (1/100)
+
+[2022-01-20 14:17:46,221: ERROR/MainProcess] consumer: Cannot connect to redis://localhost:6379//: Error 99 connecting to localhost:6379. Cannot assign requested address..
+Trying again in 4.00 seconds... (2/100)
+
+[2022-01-20 14:17:50,235: ERROR/MainProcess] consumer: Cannot connect to redis://localhost:6379//: Error 99 connecting to localhost:6379. Cannot assign requested address..
+Trying again in 6.00 seconds... (3/100)
+
+[2022-01-20 14:17:56,252: ERROR/MainProcess] consumer: Cannot connect to redis://localhost:6379//: Error 99 connecting to localhost:6379. Cannot assign requested address..
+Trying again in 8.00 seconds... (4/100)
+
+[2022-01-20 14:18:04,249: ERROR/MainProcess] consumer: Cannot connect to redis://localhost:6379//: Error 99 connecting to localhost:6379. Cannot assign requested address..
+Trying again in 10.00 seconds... (5/100)
+
+[2022-01-20 14:18:14,270: ERROR/MainProcess] consumer: Cannot connect to redis://localhost:6379//: Error 99 connecting to localhost:6379. Cannot assign requested address..
+Trying again in 12.00 seconds... (6/100)
+
+[2022-01-20 14:20:35,554: INFO/MainProcess] Connected to redis://redis:6379/0
+[2022-01-20 14:20:35,589: INFO/MainProcess] mingle: searching for neighbors
+[2022-01-20 14:20:36,664: INFO/MainProcess] mingle: all alone
+[2022-01-20 14:20:36,702: INFO/MainProcess] celery@8649411a47c8 ready.
+[2022-01-20 14:21:14,443: WARNING/MainProcess] consumer: Connection to broker lost. Trying to re-establish the connection...
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.9/site-packages/celery/worker/consumer/consumer.py", line 326, in start
+    blueprint.start(self)
+  File "/usr/local/lib/python3.9/site-packages/celery/bootsteps.py", line 116, in start
+    step.start(parent)
+  File "/usr/local/lib/python3.9/site-packages/celery/worker/consumer/consumer.py", line 618, in start
+    c.loop(*c.loop_args())
+  File "/usr/local/lib/python3.9/site-packages/celery/worker/loops.py", line 97, in asynloop
+    next(loop)
+  File "/usr/local/lib/python3.9/site-packages/kombu/asynchronous/hub.py", line 362, in create_loop
+    cb(*cbargs)
+  File "/usr/local/lib/python3.9/site-packages/kombu/transport/redis.py", line 1266, in on_readable
+    self.cycle.on_readable(fileno)
+  File "/usr/local/lib/python3.9/site-packages/kombu/transport/redis.py", line 504, in on_readable
+    chan.handlers[type]()
+  File "/usr/local/lib/python3.9/site-packages/kombu/transport/redis.py", line 847, in _receive
+    ret.append(self._receive_one(c))
+  File "/usr/local/lib/python3.9/site-packages/kombu/transport/redis.py", line 857, in _receive_one
+    response = c.parse_response()
+  File "/usr/local/lib/python3.9/site-packages/redis/client.py", line 1438, in parse_response
+    response = self._execute(conn, conn.read_response)
+  File "/usr/local/lib/python3.9/site-packages/redis/client.py", line 1420, in _execute
+    return conn.retry.call_with_retry(
+  File "/usr/local/lib/python3.9/site-packages/redis/retry.py", line 44, in call_with_retry
+    fail(error)
+  File "/usr/local/lib/python3.9/site-packages/redis/client.py", line 1422, in <lambda>
+    lambda error: self._disconnect_raise_connect(conn, error),
+  File "/usr/local/lib/python3.9/site-packages/redis/client.py", line 1409, in _disconnect_raise_connect
+    raise error
+  File "/usr/local/lib/python3.9/site-packages/redis/retry.py", line 41, in call_with_retry
+    return do()
+  File "/usr/local/lib/python3.9/site-packages/redis/client.py", line 1421, in <lambda>
+    lambda: command(*args, **kwargs),
+  File "/usr/local/lib/python3.9/site-packages/redis/connection.py", line 800, in read_response
+    response = self._parser.read_response(disable_decoding=disable_decoding)
+  File "/usr/local/lib/python3.9/site-packages/redis/connection.py", line 468, in read_response
+    self.read_from_socket()
+  File "/usr/local/lib/python3.9/site-packages/redis/connection.py", line 428, in read_from_socket
+    raise ConnectionError(SERVER_CLOSED_CONNECTION_ERROR)
+redis.exceptions.ConnectionError: Connection closed by server.
+[2022-01-20 14:21:50,103: INFO/MainProcess] Connected to redis://redis:6379/0
+[2022-01-20 14:21:50,132: INFO/MainProcess] mingle: searching for neighbors
+[2022-01-20 14:21:51,186: INFO/MainProcess] mingle: all alone
+[2022-01-20 14:21:51,251: INFO/MainProcess] celery@45525d4d1076 ready.
+[2022-01-20 14:28:20,621: INFO/MainProcess] Connected to redis://redis:6379/0
+[2022-01-20 14:28:20,626: INFO/MainProcess] mingle: searching for neighbors
+[2022-01-20 14:28:21,636: INFO/MainProcess] mingle: all alone
+[2022-01-20 14:28:21,654: INFO/MainProcess] celery@9ce62fd86910 ready.
+[2022-01-20 14:29:05,298: INFO/MainProcess] Connected to redis://redis:6379/0
+[2022-01-20 14:29:05,304: INFO/MainProcess] mingle: searching for neighbors
+[2022-01-20 14:29:06,317: INFO/MainProcess] mingle: all alone
+[2022-01-20 14:29:06,339: INFO/MainProcess] celery@37429d1fc5df ready.
+[2022-01-20 14:34:12,295: INFO/MainProcess] Connected to redis://redis:6379/0
+[2022-01-20 14:34:12,309: INFO/MainProcess] mingle: searching for neighbors
+[2022-01-20 14:34:13,327: INFO/MainProcess] mingle: all alone
+[2022-01-20 14:34:13,347: INFO/MainProcess] celery@37429d1fc5df ready.
+[2022-01-20 14:39:57,936: INFO/MainProcess] Connected to redis://redis:6379/0
+[2022-01-20 14:39:57,942: INFO/MainProcess] mingle: searching for neighbors
+[2022-01-20 14:39:58,990: INFO/MainProcess] mingle: all alone
+[2022-01-20 14:39:59,017: INFO/MainProcess] celery@37429d1fc5df ready.
+[2022-01-20 14:47:29,602: INFO/MainProcess] Connected to redis://redis:6379/0
+[2022-01-20 14:47:29,612: INFO/MainProcess] mingle: searching for neighbors
+[2022-01-20 14:47:30,634: INFO/MainProcess] mingle: all alone
+[2022-01-20 14:47:30,662: INFO/MainProcess] celery@fc8082912b0b ready.
+[2022-01-20 14:51:22,587: INFO/MainProcess] Connected to redis://redis:6379/0
+[2022-01-20 14:51:22,592: INFO/MainProcess] mingle: searching for neighbors
+[2022-01-20 14:51:23,606: INFO/MainProcess] mingle: all alone
+[2022-01-20 14:51:23,627: INFO/MainProcess] celery@fc8082912b0b ready.

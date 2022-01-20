@@ -1,0 +1,29 @@
+
+{% extends '../base.html' %}
+
+
+{% block content %}
+    {% load bootstrap4 %}
+    <div>
+        <div style="display:flex; justify-content: space-between" >
+            <h3 class="page-title">{% if title %}{{ title }}{% else %}Add City{% endif %}</h3>
+            <a class="btn btn-primary" href="{% url "city_index" %}">city List</a>
+        </div>
+        <div class="box">
+            <div class="card">
+                <div class="content">
+                    <form method="post" class="ml-3" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {% bootstrap_form form %}
+                        {% if edit %}
+                        {% bootstrap_button 'Update' %}
+                        {% else %}
+                          {% bootstrap_button 'Add' %}
+
+                        {% endif %}
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

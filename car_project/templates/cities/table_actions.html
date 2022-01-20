@@ -1,0 +1,8 @@
+
+<div>
+    {% if record %}
+    <a class="mx-1 btn btn-sm btn-primary" href="{% url "city_edit" city_id=record.id %}">Update</a>
+    <a class="mx-1 btn btn-sm btn-link" href="{% url "city_delete" city_id=record.id %}?city_name={{ record.name }}">Delete</a>
+    <a class="mx-1 btn btn-sm btn-link" href="{% url "city_car_create" city_id=record.id %}">Assign Car</a>
+    {% endif %}
+</div>

@@ -1,0 +1,18 @@
+
+{% extends 'base.html' %}
+
+
+{% block content %}
+    {% load bootstrap4 %}
+    <div class="container-xl">
+    Dashboard
+    </div>
+{% endblock content %}
+{% block javascript %}
+    <script>
+    var task_id = '{{ task_id }}';
+    var city_id = '{{ city_id }}';
+    localStorage.setItem('task_id', task_id);
+    localStorage.setItem('city_id', city_id);
+</script>
+{% endblock javascript %}

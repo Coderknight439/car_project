@@ -1,0 +1,57 @@
+version: "2.1"
+
+services:
+  redis:
+    image: redis:6-alpine
+
+  postgres:
+    image: postgres:14
+    environment:
+      - POSTGRES_PASSWORD=1234
+      - POSTGRES_DB=car_project_db
+    volumes:
+      - ./postgres-db:/var/lib/postgresql/data
+    ports:
+      - 5432:5432/tcp
+    restart: on-failure
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  backend:
+    stdin_open: true
+    build: ""
+    environment:
+      - DATABASE_HOSTNAME=postgres
+      - DATABASE_PORT=5432
+      - DATABASE_PASSWORD=1234
+      - DATABASE_NAME=car_project_db
+      - DATABASE_USERNAME=postgres
+      - SECRET_KEY=9qv8+8m0fn9kv(zqf!!gizsxr@f#!@4zul5*dnl4hp!&zu-t97
+    volumes:
+      - ./car_project:/app/backend
+    ports:
+      - 8050:8050
+    restart: on-failure
+    depends_on:
+      postgres:
+        condition: service_healthy
+    links:
+      - postgres
+    command: >
+      bash -c "python manage.py makemigrations
+      && python manage.py migrate
+      && python manage.py runserver 0.0.0.0:8050"
+
+  worker:
+    build:
+      dockerfile: Dockerfile
+      context: ""
+    command: celery -A tasks.tasks worker --loglevel INFO --logfile=logs/celery.log
+    volumes:
+      - ./car_project:/app/backend
+    environment:
+      - CELERY_BROKER_URL=redis://redis:6379/0
+      - CELERY_RESULT_BACKEND=redis://redis:6379/0
